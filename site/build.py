@@ -26,10 +26,12 @@ SITE_SRC = Path(__file__).resolve().parent
 LANGS = {
     "en": {"tex": "resume.tex", "path": "", "html_lang": "en", "pdf": "VuVietAnh_CV.pdf",
            "ui": {"download": "Download CV (PDF)", "switch": "Tiếng Việt", "updated": "Last updated",
-                  "built": "Generated from my LaTeX CV", "contents": "Contents", "top": "Back to top"}},
+                  "built": "Generated from my LaTeX CV", "contents": "Contents", "top": "Back to top",
+                  "role": "AI Engineer · Machine Learning Researcher"}},
     "vi": {"tex": "resume_vi.tex", "path": "vi/", "html_lang": "vi", "pdf": "VuVietAnh_CV_vi.pdf",
            "ui": {"download": "Tải CV (PDF)", "switch": "English", "updated": "Cập nhật lần cuối",
-                  "built": "Tự động tạo từ CV LaTeX", "contents": "Mục lục", "top": "Lên đầu trang"}},
+                  "built": "Tự động tạo từ CV LaTeX", "contents": "Mục lục", "top": "Lên đầu trang",
+                  "role": "Kỹ sư AI · Nghiên cứu Học máy"}},
 }
 
 
@@ -215,6 +217,9 @@ def plain(s: str) -> str:
 # --------------------------------------------------------------------------- #
 #  Section parsing -> HTML blocks
 # --------------------------------------------------------------------------- #
+PROJECT_PREFIX = re.compile(r"^(Project|Dự án)\s*:\s*", re.I)
+
+
 def render_entries(body: str) -> str:
     out = []
     for title, _loc, desc in find_macro_calls(body, "cventry", 3):
@@ -222,31 +227,85 @@ def render_entries(body: str) -> str:
         for block in env_body(desc, "cvitems"):
             items += split_items(block)
         lis = "".join(f"<li>{inline(it)}</li>" for it in items)
-        out.append(f'<article class="project"><h4>{inline(title)}</h4>'
+        out.append(f'<article class="project"><h4>{PROJECT_PREFIX.sub("", inline(title))}</h4>'
                    + (f"<ul>{lis}</ul>" if lis else "") + "</article>")
     return "".join(out)
 
 
+def split_top(s: str, sep: str = ",") -> list[str]:
+    """Split on sep outside (), [] and {}."""
+    parts, depth, cur = [], 0, ""
+    for ch in s:
+        if ch in "([{":
+            depth += 1
+        elif ch in ")]}":
+            depth -= 1
+        if ch == sep and depth == 0:
+            parts.append(cur.strip()); cur = ""
+        else:
+            cur += ch
+    if cur.strip():
+        parts.append(cur.strip())
+    return parts
+
+
+def job_header(org: str, when: str) -> str:
+    """'Company, \\textnormal{\\textit{Role} | City}' -> company / role · city."""
+    m = re.match(r"\s*(.*?),\s*\\textnormal\s*\{(.*)\}\s*$", org, flags=re.S)
+    if m:
+        company = inline(m.group(1))
+        detail = " · ".join(plain(x) for x in m.group(2).split("|") if x.strip())
+    else:
+        company, detail = inline(org), ""
+    sub = f'<p class="sub">{html.escape(detail)}</p>' if detail else ""
+    return (f'<header class="block-head"><div><h3>{company}</h3>{sub}</div>'
+            f'<time>{inline(when)}</time></header>')
+
+
 def render_section(body: str) -> str:
-    """Walk the section body in source order, emitting HTML per known block."""
+    """Walk the section body in source order, emitting HTML per known block.
+
+    A job (\\cventrynew) or research group (\\cvgroupheader) opens a block; the
+    \\cventry projects that follow are nested inside it until the next one.
+    """
     tokens = re.compile(
         r"\\begin\{(cvparagraph|cvhonors|cventries2|cventries|cvskills|itemize)\}"
         r"|\\cvgroupheader(?=\s*\{)"
     )
-    out, i = [], 0
-    current_job = None
+    out, i, open_block = [], 0, False
+
+    def close():
+        nonlocal open_block
+        if open_block:
+            out.append("</div></div>")
+            open_block = False
+
     while True:
         m = tokens.search(body, i)
         if not m:
             break
         if m.group(0).startswith("\\cvgroupheader"):
             (name, note), i = read_args(body, m.end(), 2)
-            out.append(f'<div class="group"><h3>{inline(name)}</h3><p class="meta">{inline(note)}</p></div>')
+            close()
+            out.append(f'<div class="block"><header class="block-head"><div><h3>{inline(name)}</h3>'
+                       f'<p class="sub">{inline(note)}</p></div></header><div class="projects">')
+            open_block = True
             continue
         env = m.group(1)
         end = body.index("\\end{" + env + "}", m.end())
         inner = body[m.end() : end]
         i = end + len("\\end{" + env + "}")
+        if env == "cventries2":
+            for org, when, _ in find_macro_calls(inner, "cventrynew", 3):
+                close()
+                out.append(f'<div class="block">{job_header(org, when)}<div class="projects">')
+                open_block = True
+            continue
+        if env == "cventries":
+            entries = render_entries(inner)
+            out.append(entries if open_block else f'<div class="projects">{entries}</div>')
+            continue
+        close()
         if env == "cvparagraph":
             out.append(f'<p class="lead">{inline(inner)}</p>')
         elif env == "cvhonors":
@@ -254,19 +313,22 @@ def render_section(body: str) -> str:
                 f'<li class="row"><div>{inline(what)}</div><time>{inline(when)}</time></li>'
                 for what, when in find_macro_calls(inner, "cvhonor", 2))
             out.append(f'<ul class="rows">{rows}</ul>')
-        elif env == "cventries2":
-            for org, when, _ in find_macro_calls(inner, "cventrynew", 3):
-                current_job = (inline(org), inline(when))
-                out.append(f'<div class="job"><h3>{current_job[0]}</h3><time>{current_job[1]}</time></div>')
-        elif env == "cventries":
-            out.append(f'<div class="projects">{render_entries(inner)}</div>')
         elif env == "cvskills":
-            rows = "".join(f"<dt>{inline(k)}</dt><dd>{inline(v)}</dd>"
-                           for k, v in find_macro_calls(inner, "cvskill", 2))
-            out.append(f'<dl class="skills">{rows}</dl>')
+            pairs = find_macro_calls(inner, "cvskill", 2)
+            as_tags = any(len(split_top(plain(v))) > 1 for _, v in pairs)
+            if as_tags:
+                rows = "".join(
+                    f'<div class="skill"><h4>{inline(k)}</h4><ul class="tags">'
+                    + "".join(f"<li>{html.escape(t)}</li>" for t in split_top(plain(v)))
+                    + "</ul></div>" for k, v in pairs)
+                out.append(f'<div class="skills">{rows}</div>')
+            else:
+                rows = "".join(f"<dt>{inline(k)}</dt><dd>{inline(v)}</dd>" for k, v in pairs)
+                out.append(f'<dl class="kv">{rows}</dl>')
         elif env == "itemize":
             lis = "".join(f"<li>{inline(it)}</li>" for it in split_items(inner))
             out.append(f'<ul class="bullets">{lis}</ul>')
+    close()
     return "\n".join(out)
 
 
@@ -337,16 +399,21 @@ def build_page(lang: str, other: str, template: str, has_pdf: bool) -> str:
     head = parse_header(ROOT / cfg["tex"])
     sections = parse_sections(ROOT / cfg["tex"])
     up = "../" if cfg["path"] else ""
+    lead = next((k for k, (_, c) in enumerate(sections) if c.startswith('<p class="lead">')), None)
+    summary_html = ""
+    if lead is not None:
+        summary_html = re.sub(r'^<p class="lead">|</p>$', "", sections.pop(lead)[1])
     nav = "".join(f'<a href="#{slug(t)}">{html.escape(t.title())}</a>' for t, _ in sections)
     body = "\n".join(
-        f'<section id="{slug(t)}"><h2>{html.escape(t.title())}</h2>{content}</section>'
+        f'<section id="{slug(t)}"><h2>{html.escape(t.title())}</h2><div class="content">{content}</div></section>'
         for t, content in sections)
     pdf_btn = (f'<a class="btn" href="{up}{cfg["pdf"]}" download>{ui["download"]}</a>' if has_pdf else "")
-    summary = next((re.sub(r"<[^>]+>", "", c) for t, c in sections if "lead" in c), "")
+    summary = re.sub(r"<[^>]+>", "", summary_html)
     replacements = {
         "LANG": cfg["html_lang"], "NAME": html.escape(head["name"].title()),
-        "DESCRIPTION": html.escape(summary[:200]), "UP": up,
-        "CONTACT": contact_links(head), "NAV": nav, "BODY": body, "PDF_BUTTON": pdf_btn,
+        "DESCRIPTION": html.escape(summary[:200]), "UP": up, "SUMMARY": summary_html,
+        "ROLE": ui["role"],
+        "CONTACT": contact_links(head), "BODY": body, "PDF_BUTTON": pdf_btn,
         "SWITCH_HREF": up + ocfg["path"], "SWITCH_LABEL": ui["switch"],
         "UPDATED": f'{ui["updated"]}: {date.today().isoformat()} · {ui["built"]}',
         "CONTENTS": ui["contents"], "TOP": ui["top"],
