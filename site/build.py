@@ -415,8 +415,7 @@ def build_page(lang: str, other: str, template: str, has_pdf: bool) -> str:
         "ROLE": ui["role"],
         "CONTACT": contact_links(head), "BODY": body, "PDF_BUTTON": pdf_btn,
         "SWITCH_HREF": up + ocfg["path"], "SWITCH_LABEL": ui["switch"],
-        "UPDATED": f'{ui["updated"]}: {date.today().isoformat()} · {ui["built"]}',
-        "CONTENTS": ui["contents"], "TOP": ui["top"],
+        "CONTENTS": ui["contents"],
     }
     page = template
     for k, v in replacements.items():
