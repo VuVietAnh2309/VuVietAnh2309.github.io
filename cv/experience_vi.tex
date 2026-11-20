@@ -1,0 +1,200 @@
+\cvsection{KINH NGHIỆM LÀM VIỆC}
+
+\begin{cventries2}
+
+%---------------------------------------------------------
+  \cventrynew
+  {Prep Education, \textnormal{\textit{Kỹ sư AI} | Hà Nội}}
+  {10/2025 -- Hiện tại}
+  {}
+
+\end{cventries2}
+
+\vspace{-10pt}
+
+\begin{cventries}
+
+  \cventry
+    {Dự án: Hệ thống chấm điểm bài luận tự động (AES) cho phần Writing và Speaking}
+    {}
+    {
+      \begin{cvitems}
+        \item {Phát triển hệ thống chấm điểm tự động (AES) ứng dụng AI để đánh giá bài thi IELTS Writing Task 1 \& 2 và phần thi Speaking với độ chính xác cao.}
+        \item {AES CHO SPEAKING: Thiết kế và triển khai hệ thống chấm điểm phần thi Speaking sử dụng các mô hình Học máy tích hợp với ba hệ thống con chuyên biệt: APA (Đánh giá phát âm tự động) cho độ chính xác phát âm và độ trôi chảy, GEC (Sửa lỗi ngữ pháp) phát hiện và sửa lỗi ngữ pháp, và Dify để phân tích độ phong phú từ vựng. Đạt được các chỉ số: Accuracy ±0.5 $\sim$ 82\%, QWK và PCC $\sim$ 90\%.}
+        \item {AES CHO WRITING: Thiết kế và huấn luyện các mô hình học sâu cho bài toán chấm điểm cross-prompt: PANN (mô hình Cross-Prompt dựa trên Deberta-V3) với 189M tham số, và mô hình T5 sau lượng tử hóa (quantized) tối ưu còn 120M tham số. Kết quả: Accuracy ±0.5 $\sim$ 85\% (Wt1) và $\sim$ 87\% (Wt2); Accuracy ±1 $\sim$ 98\%.}
+        \item {Triển khai pipeline MLOps end-to-end: huấn luyện mô hình $\rightarrow$ đóng gói Docker $\rightarrow$ tự động hóa CI/CD bằng GitLab $\rightarrow$ triển khai bằng ArgoCD lên cụm Kubernetes production.}
+        \item {Tối ưu việc phục vụ mô hình bằng kỹ thuật dynamic batching và xếp hàng request để xử lý suy luận thông lượng cao cho hàng nghìn học viên đánh giá đồng thời.}
+        \item {Đưa hệ thống vào production, cho phép chấm điểm tự động theo thời gian thực với độ trễ thấp và độ sẵn sàng cao.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Dự án: Hệ thống sửa lỗi ngữ pháp \& từ vựng tiếng Anh (ELG)}
+    {}
+    {
+      \begin{cvitems}
+        \item {Phát triển hệ thống sửa lỗi ngữ pháp tiếng Anh dạng lai (hybrid), kết hợp phương pháp dựa trên luật (rule-based) với Mô hình ngôn ngữ lớn (LLMs) để nâng cao độ chính xác.}
+        \item {Triển khai phát hiện và sửa lỗi toàn diện cho nhiều khía cạnh ngôn ngữ: lỗi ngữ pháp, dùng từ sai, lỗi chính tả, lỗi collocation, lỗi sử dụng thành ngữ, độ phù hợp về từ vựng, từ nối câu, và lỗi cụm từ — giúp học viên nhận diện và sửa lỗi viết hiệu quả.}
+        \item {Thiết kế các module rule-based cho việc khớp mẫu xác định, kết hợp với suy luận từ LLM cho các cấu trúc ngữ pháp phức tạp.}
+        \item {Đạt điểm F0.5 khoảng 60\% trên tập kiểm thử riêng, cân bằng giữa precision và recall, ưu tiên precision để giảm thiểu sửa lỗi sai.}
+        \item {Xây dựng hạ tầng phục vụ chuẩn production theo best practice MLOps: đóng gói Docker, GitLab CI/CD cho kiểm thử và triển khai tự động, ArgoCD cho điều phối Kubernetes.}
+        \item {Triển khai chiến lược batching và caching request hiệu quả để tối ưu độ trễ suy luận của LLM, giảm chi phí tính toán đồng thời duy trì thông lượng cao.}
+        \item {Triển khai hệ thống phục vụ hàng nghìn học viên mỗi ngày, hỗ trợ cải thiện kỹ năng viết qua việc sửa lỗi ngữ pháp và từ vựng theo thời gian thực.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+
+\vspace{8pt}
+\newpage
+
+%---------------------------------------------------------
+\begin{cventries2}
+
+  \cventrynew
+  {Tập đoàn Công nghệ Vietsens, \textnormal{\textit{Kỹ sư AI} | Hà Nội}}
+  {10/2024 -- 09/2025}
+  {}
+
+\end{cventries2}
+
+\vspace{-10pt}
+
+\begin{cventries}
+
+  \cventry
+    {Dự án: Trợ lý AI Y tế cho Quản lý Bệnh viện}
+    {}
+    {
+      \begin{cvitems}
+        \item {Phát triển giải pháp tích hợp AI trong lĩnh vực y tế, được triển khai trong Phần mềm Quản lý Bệnh viện Quốc gia, đặc biệt áp dụng tại Bệnh viện Bạch Mai.}
+        \item {Sử dụng các kỹ thuật Học máy và Xử lý ngôn ngữ tự nhiên (NLP) tiên tiến, bao gồm Mô hình ngôn ngữ lớn (LLMs), để hỗ trợ y tế theo thời gian thực.}
+        \item {Thiết kế và triển khai các module phân tích dữ liệu bệnh nhân, hỗ trợ quản lý ca bệnh và hỗ trợ chẩn đoán sơ bộ.}
+        \item {Xây dựng các AI agent tương tác hỗ trợ bác sĩ và nhân viên y tế trong việc khai thác bệnh sử, kê đơn và chẩn đoán.}
+        \item {Đảm bảo tích hợp liền mạch với hệ thống thông tin bệnh viện (HIS) hiện có nhằm nâng cao hiệu quả vận hành và chăm sóc bệnh nhân.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Dự án: Hệ thống gợi ý đơn thuốc và phát hiện xung đột thuốc}
+    {}
+    {
+      \begin{cvitems}
+        \item {Phát triển hệ thống dự đoán hỗ trợ bác sĩ kê đơn thuốc dựa trên thông tin bệnh nhân.}
+        \item {Sử dụng các kỹ thuật phân tích dữ liệu để tiền xử lý và trích xuất đặc trưng từ hồ sơ bệnh án điện tử.}
+        \item {Áp dụng các mô hình phân loại học máy truyền thống (Decision Trees, Random Forests, SVM) và thử nghiệm các bộ phân loại nâng cao để cải thiện độ chính xác.}
+        \item {Tích hợp Mô hình ngôn ngữ lớn (LLMs) để đánh giá đơn thuốc, phát hiện trùng lặp hoạt chất và xác định khả năng tương tác thuốc--thuốc.}
+        \item {Cung cấp công cụ hỗ trợ ra quyết định, giúp nhân viên y tế giảm sai sót khi kê đơn và nâng cao an toàn cho bệnh nhân.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+
+\vspace{8pt}
+
+%---------------------------------------------------------
+\begin{cventries2}
+
+  \cventrynew
+  {Công ty Hệ thống Thông tin FPT, \textnormal{\textit{Thực tập sinh Kỹ sư AI} | Hà Nội}}
+  {08/2023 -- 05/2024}
+  {}
+
+\end{cventries2}
+
+\vspace{-10pt}
+
+\begin{cventries}
+
+  \cventry
+    {Dự án: Sinh chú thích ảnh (Image Captioning)}
+    {}
+    {
+      \begin{cvitems}
+        \item {Phát triển hệ thống sinh chú thích cho ảnh sử dụng các mô hình học sâu tiên tiến.}
+        \item {Xử lý dữ liệu hình ảnh để sinh các chú thích mô tả phản ánh chính xác nội dung của ảnh.}
+        \item {Sử dụng cụ thể các mô hình tiên tiến như Transformer và Mạng nơ-ron tích chập (CNN) tích hợp cơ chế attention để nâng cao chất lượng sinh chú thích.}
+        \item {Dự án nhằm xây dựng giải pháp mô tả ảnh tự động hiệu quả, ứng dụng các kỹ thuật mới nhất trong lĩnh vực thị giác máy tính và xử lý ngôn ngữ tự nhiên.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Dự án: OCR cho nhận dạng Báo cáo Tài chính}
+    {}
+    {
+      \begin{cvitems}
+        \item {Phát triển hệ thống OCR để nhận dạng và trích xuất thông tin quan trọng từ báo cáo tài chính của các ngân hàng.}
+        \item {Áp dụng các mô hình OCR tiên tiến như PaddleOCR, Tesseract và TrOCR (OCR dựa trên Transformer) tích hợp NLP để cấu trúc hóa dữ liệu.}
+        \item {Sử dụng LayoutLM / LayoutLMv3 để hiểu bố cục tài liệu, cải thiện việc trích xuất bảng, hình và các cặp khóa--giá trị.}
+        \item {Triển khai tiền xử lý ảnh tài liệu (chỉnh nghiêng, nhị phân hóa, khử nhiễu) để tăng độ chính xác phát hiện và nhận dạng văn bản.}
+        \item {Xây dựng pipeline hậu xử lý kết hợp Regex + Nhận dạng thực thể có tên (NER) để chuẩn hóa thông tin trích xuất.}
+        \item {Triển khai mô hình như một phần của pipeline AI hỗ trợ các nhà phân tích dữ liệu tài chính.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+
+\vspace{8pt}
+
+%---------------------------------------------------------
+\begin{cventries2}
+
+  \cventrynew
+  {Đại học Bách khoa Hà Nội, \textnormal{\textit{Sinh viên Khoa học Máy tính} | Hà Nội}}
+  {09/2022 -- 09/2024}
+  {}
+
+\end{cventries2}
+
+\vspace{-10pt}
+
+\begin{cventries}
+
+  \cventry
+    {Dự án: Thích ứng với biến đổi khí hậu thông qua cải thiện dự báo thời tiết cực đoan (WIDS Datathon 2023 -- Kaggle)}
+    {}
+    {
+      \begin{cvitems}
+        \item {Dự án phát triển mô hình dự đoán biến đổi khí hậu dựa trên các mô hình học máy.}
+        \item {Xử lý dữ liệu dạng chuỗi thời gian (time-series) và áp dụng các kỹ thuật ensemble để nâng cao hiệu năng của mô hình.}
+        \item {Sử dụng cụ thể các mô hình dự đoán mới nhất như Gradient Boosting, Light Gradient Boosting và CatBoost, kết hợp chúng với nhau.}
+        \item {Dự án thuộc cuộc thi diễn ra cuối năm 2022 trên nền tảng Kaggle với mục tiêu dự đoán biến đổi khí hậu.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Dự án: Xác minh người nói tiếng Việt (Cuộc thi VLSP 2021)}
+    {}
+    {
+      \begin{cvitems}
+        \item {Dự án phát triển hệ thống xác minh người nói tiếng Việt sử dụng các mô hình học sâu.}
+        \item {Xử lý các mẫu giọng nói để tạo ra đặc trưng âm học đặc thù của từng người nói phục vụ đăng ký và xác minh.}
+        \item {Sử dụng cụ thể các mô hình như ECAPA\_TDNN, ECAPA\_CNN\_TDNN và RawNet3, đồng thời thử nghiệm các hàm mất mát như triplet, softmax và proto.}
+        \item {Dự án thuộc cuộc thi VLSP với chủ đề xác minh người nói, mục tiêu xác định chính xác hai mẫu giọng nói có thuộc cùng một người hay không.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Dự án: Phân tích cảm xúc theo khía cạnh (ABSA -- NLP LAB)}
+    {}
+    {
+      \begin{cvitems}
+        \item {Xây dựng hệ thống phân tích cảm xúc theo khía cạnh cho tiếng Việt sử dụng SA-Transformer.}
+        \item {Kết hợp các kỹ thuật NLP như gán nhãn từ loại (POS tagging) và Biaffine Parsing để trích xuất cặp khía cạnh--cảm xúc.}
+        \item {Thu thập và gán nhãn dữ liệu chuyên ngành để huấn luyện và đánh giá mô hình.}
+        \item {Đạt được độ chính xác phân loại cảm xúc theo khía cạnh tốt hơn so với các phương pháp baseline.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+

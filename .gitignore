@@ -1,0 +1,21 @@
+# Private contact details (phone, home address) -- never published
+private/
+
+# LaTeX build output (CI rebuilds the PDFs)
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.pdf
+
+# Generated site
+_site/
+
+# Not part of the CV
+README.md
+Certification/
+cv/Competitions.tex
+cv/interests.tex
+.DS_Store

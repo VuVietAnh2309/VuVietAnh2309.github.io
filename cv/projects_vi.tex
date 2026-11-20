@@ -1,0 +1,70 @@
+%-------------------------------------------------------------------------------
+%    SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{KINH NGHIỆM NGHIÊN CỨU}
+
+% Helper: nice group header with a LEFT blue note chip.
+\newcommand{\cvgroupheader}[2]{%
+  \vspace{0.6em}%
+  \noindent
+  \colorbox{black!5}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      {\colorbox{blue!10}{\strut\ \textcolor{blue}{\footnotesize\textbf{#2}}\ }}\hspace{0.8em}%
+      {\large\textbf{#1}}%
+    }%
+  }\\[-0.2em]
+}
+
+% ========================= MACHINE LEARNING GROUP =========================
+\cvgroupheader{Học máy \& Học kết hợp (Ensemble Learning)}{Nghiên cứu sinh viên cùng TS. Kate Han và TS. Nguyễn Thanh -- 03/2023 đến nay}
+\begin{cventries}
+
+  \cventry
+    {VISTA: Thuật toán Lựa chọn Ensemble được Hỗ trợ bởi Surrogate dựa trên Giải thuật Di truyền chiều dài thay đổi và LSTM trong Hệ thống Ensemble nhiều tầng -- \emph{2024 IEEE Congress on Evolutionary Computation (CEC)} (Đã công bố, 06/2024)}
+    {}
+    {
+      \begin{cvitems}
+        \item {Dự án tập trung phát triển phương pháp VISTA, kết hợp Giải thuật Di truyền chiều dài thay đổi (VLGA) với mô hình surrogate dựa trên LSTM để tối ưu việc lựa chọn ensemble trong Hệ thống Ensemble nhiều tầng (MLES).}
+        \item {Khảo cứu các phương pháp ensemble learning hiện có cùng thuật toán tiến hóa có hỗ trợ surrogate (SAEA).}
+        \item {Đề xuất phương pháp mới kết hợp VLGA với LSTM để chuyển đổi mã hóa chiều dài thay đổi thành biểu diễn có kích thước cố định phục vụ dự đoán fitness.}
+        \item {Triển khai hệ thống ensemble nhiều tầng, trong đó mỗi tầng có một tập các bộ phân loại (EoC) được huấn luyện trên cả dữ liệu gốc và dự đoán từ tầng trước.}
+        \item {Thực nghiệm trên 15 bộ dữ liệu phổ biến, chứng minh VISTA vượt trội so với các thuật toán benchmark.}
+        \item {Phát triển và xác thực thành công phương pháp VISTA, cho thấy hiệu quả trong việc cải thiện hiệu năng của MLES.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Khảo cứu các phương pháp Imputation}
+    {}
+    {
+      \begin{cvitems}
+        \item {Khảo cứu các phương pháp Imputation trên kho dữ liệu UCI Machine Learning Repository (15 bộ dữ liệu).}
+        \item {Triển khai một số phương pháp Imputation (SimpleImputer, KNN, MICE, GINN, ...) cho dữ liệu thiếu và đánh giá trong bài toán phân loại.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+
+\vspace{10pt}
+
+% ===================== COMPUTER VISION GROUP =====================
+\cvgroupheader{Thị giác máy tính \& Học sâu}{Nghiên cứu sinh viên cùng PGS. Phạm Văn Hải -- 09/2023 đến nay}
+\begin{cventries}
+
+  \cventry
+    {Nâng cao Nhận diện Biểu cảm Khuôn mặt với CNN nhẹ dựa trên cơ chế Attention -- \emph{Journal of Ambient Intelligence and Humanized Computing} (Đã công bố, 08/2026)}
+    {}
+    {
+      \begin{cvitems}
+        \item {Thiết kế mô hình học sâu nhẹ cho nhận diện biểu cảm khuôn mặt, tối ưu để triển khai trên thiết bị biên (edge) có tài nguyên tính toán hạn chế.}
+        \item {Sử dụng backbone MobileNetV2 cắt ngắn (truncated) để trích xuất đặc trưng hiệu quả từ ảnh khuôn mặt.}
+        \item {Đề xuất khối Patch Extraction để chia feature map thành các vùng không chồng lấn, giúp mô hình tập trung vào đặc trưng cục bộ ngay cả khi bị che khuất hoặc thay đổi tư thế đầu.}
+        \item {Tích hợp Attention Classifier với cơ chế self-attention nhằm tăng cường khả năng phân biệt đặc trưng và độ chính xác phân loại.}
+        \item {Đạt kết quả cạnh tranh trên các tập dữ liệu chuẩn (RAF-DB, FER2013, FERPlus) cùng một bộ dữ liệu thực tế tự thu thập có yếu tố che khuất và biến đổi tư thế.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+

@@ -1,0 +1,218 @@
+\cvsection{WORK EXPERIENCE}
+
+\begin{cventries2}
+
+%---------------------------------------------------------
+  \cventrynew
+  {Prep Education, \textnormal{\textit{AI Engineer} | Hanoi}}
+  {Oct 2025 -- Present}
+  {}
+
+\end{cventries2}
+
+\vspace{-10pt}
+
+\begin{cventries}
+
+  \cventry
+    {Project: Automated Essay Scoring System (AES) for Writing and Speaking}
+    {}
+    {
+      \begin{cvitems}
+        \item {Developed an AI-powered Automated Essay Scoring (AES) system for evaluating IELTS Writing Task 1 \& 2 and Speaking performance with high accuracy.}
+        \item {AES FOR SPEAKING: Designed and implemented the Speaking scoring system using Machine Learning models integrated with three specialized subsystems: APA (Automated Pronunciation Assessment) for pronunciation accuracy and fluency evaluation, GEC (Grammatical Error Correction) for detecting and correcting grammatical errors, and Dify for analyzing vocabulary richness and lexical diversity. Achieved performance metrics: Accuracy ±0.5 $\sim$ 82\%, QWK and PCC $\sim$ 90\%.}
+        \item {AES FOR WRITING: Designed and trained deep learning models for cross-prompt essay scoring: PANN (Cross-Prompt Model base Deberta-V3) with 189M parameters, and quantized T5 model optimized to 120M parameters. Achieved strong performance: Accuracy ±0.5 $\sim$ 85\% (Wt1) and $\sim$ 87\% (Wt2); Accuracy ±1 $\sim$ 98\%.}
+        \item {Implemented end-to-end MLOps pipeline: model training $\rightarrow$ Docker containerization $\rightarrow$ GitLab CI/CD automation $\rightarrow$ ArgoCD deployment to production Kubernetes cluster.}
+        \item {Optimized model serving with dynamic batching techniques and request queuing to handle high-throughput inference for thousands of concurrent student assessments.}
+        \item {Deployed the system into production, enabling real-time automated scoring with low latency and high availability.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Project: English Lexical Grammar (ELG) Correction System}
+    {}
+    {
+      \begin{cvitems}
+        \item {Developed a hybrid English grammar correction system combining rule-based approaches with Large Language Models (LLMs) for enhanced accuracy.}
+        \item {Implemented comprehensive error detection and correction for multiple linguistic aspects: grammatical errors, vocabulary misuse, spelling mistakes, collocation errors, idiomatic expressions abuse or misuse, lexical resource appropriateness, linking devices, and phrase usage errors, helping students identify and correct writing mistakes effectively.}
+        \item {Designed rule-based modules for deterministic pattern matching alongside LLM-powered inference for complex grammatical constructs.}
+        \item {Achieved F0.5 score of approximately 60\% on private test sets, balancing precision and recall with emphasis on precision to minimize false corrections.}
+        \item {Designed an LLM-as-judge evaluation framework with an explicit rubric of semantic criteria — grammatical correctness, meaning preservation, minimal-edit fidelity, error-type accuracy, and naturalness of the corrected output — using an evaluator LLM to score each criterion per sample. This produced semantically grounded quality signals beyond what string-overlap metrics (F0.5, BLEU) can capture, surfacing failure modes such as over-correction, paraphrasing drift, and false positives, and directly guided prompt-tuning and rule-refinement iterations.}
+        \item {Built production-grade serving infrastructure following MLOps best practices: vLLM as the LLM inference backend (continuous batching, PagedAttention) for high-throughput, low-latency serving; Docker containerization for model packaging; GitLab CI/CD for automated testing and deployment; ArgoCD for Kubernetes orchestration.}
+        \item {Layered application-level request batching and caching on top of vLLM to further reduce tail latency and compute cost while maintaining high throughput under bursty student traffic.}
+        \item {Deployed the system to support thousands of students daily in improving their writing skills through real-time grammar and vocabulary correction.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Project: Chinese Vocabulary Extraction Pipeline}
+    {}
+    {
+      \begin{cvitems}
+        \item {Built an end-to-end AI service that transforms images of Chinese text into structured vocabulary data with full linguistic annotations (simplified/traditional, pinyin, POS, bilingual definitions), supporting flashcard generation and language-learning content.}
+        \item {Designed a 5-stage pipeline: PP-OCRv5 (text detection + recognition) $\rightarrow$ custom cleaner (reading order, line merging, confidence filtering) $\rightarrow$ linguistic analysis (jieba segmentation, pypinyin, opencc simplified$\leftrightarrow$traditional, POS tagging) $\rightarrow$ self-hosted Qwen3.5-4B-Instruct-2507 enrichment (served via vLLM with continuous batching and PagedAttention) $\rightarrow$ schema validator.}
+        \item {Benchmarked a single-stage VLM baseline (Qwen3.6-35B-A3B receiving the raw image directly) against the two-stage OCR + LLM pipeline (PP-OCRv5 followed by Qwen3.5-4B-Instruct-2507). The two-stage approach delivered higher recognition accuracy on dense Chinese text, lower end-to-end latency, substantially reduced inference cost, and made each stage independently testable and replaceable.}
+        \item {Adopted a hybrid LLM strategy: libraries handle deterministic work (segmentation, pinyin, traditional conversion); the LLM only resolves what libraries cannot do without context — polyphonic pinyin, ambiguous 1-to-many traditional mappings, and bilingual definitions — reducing token usage and improving reliability.}
+        \item {Encoded explicit Chinese linguistic rules in the LLM prompt (numeral-and-measure splits, particle separation, erhua handling, fixed-phrase preservation, place-name conventions) to ensure consistent re-segmentation of compound entries.}
+        \item {Optimized GPU memory on PaddlePaddle by capping the VRAM allocation fraction and resizing inputs to max 1920px, lowering idle VRAM from $\sim$8.7\,GB to $\sim$600\,MB and peak usage to $\sim$2.4\,GB on a 24\,GB card.}
+        \item {Implemented an async OCR batcher over an asyncio queue that collects concurrent requests into GPU batches (up to 8 images per forward pass with a 50\,ms collection window), maximizing throughput without blocking the event loop.}
+        \item {Exposed the system as a FastAPI service (predict, pipeline, and health endpoints with Swagger UI) supporting multilingual definitions (vi, en, zh, ja, ko) and a Streamlit dev UI; packaged with Docker + NVIDIA Container Toolkit for reproducible GPU deployment.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+
+\vspace{8pt}
+
+%---------------------------------------------------------
+\begin{cventries2}
+
+  \cventrynew
+  {Vietsens Technology Group, \textnormal{\textit{AI Engineer} | Hanoi}}
+  {Oct 2024 -- Sep 2025}
+  {}
+
+\end{cventries2}
+
+\vspace{-10pt}
+
+\begin{cventries}
+
+  \cventry
+    {Project: AI Healthcare Assistant for Hospital Management}
+    {}
+    {
+      \begin{cvitems}
+        \item {Developed an AI-integrated solution for healthcare, deployed within the National Hospital Management Software, particularly adopted by Bach Mai Hospital.}
+        \item {Utilized advanced Machine Learning and Natural Language Processing (NLP) techniques, including Large Language Models (LLMs), for real-time medical support.}
+        \item {Designed and implemented modules for patient data analysis, case management assistance, and initial diagnosis support.}
+        \item {Built interactive AI agents to assist doctors and medical staff with medical history inquiry, prescription, and diagnostics.}
+        \item {Ensured seamless integration with existing hospital information systems (HIS) for improved operational efficiency and patient care.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Project: Prescription Recommendation and Conflict Detection System}
+    {}
+    {
+      \begin{cvitems}
+        \item {Developed a predictive system to support doctors in prescribing medications based on patient information.}
+        \item {Utilized data analysis techniques to preprocess and extract features from electronic health records.}
+        \item {Applied traditional machine learning classification models (Decision Trees, Random Forests, SVM) and experimented with advanced classifiers for improved accuracy.}
+        \item {Integrated Large Language Models (LLMs) to evaluate prescriptions, detect duplicate active ingredients, and identify potential drug-drug interactions.}
+        \item {Delivered a decision-support tool that helps healthcare professionals reduce prescription errors and improve patient safety.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+
+\vspace{8pt}
+
+%---------------------------------------------------------
+\begin{cventries2}
+
+  \cventrynew
+  {FPT Information System Company, \textnormal{\textit{AI Engineer Intern} | Hanoi}}
+  {Aug 2023 -- May 2024}
+  {}
+
+\end{cventries2}
+
+\vspace{-10pt}
+
+\begin{cventries}
+
+  \cventry
+    {Project: Image Captioning}
+    {}
+    {
+      \begin{cvitems}
+        \item {Developed an image captioning system using advanced deep learning models.}
+        \item {Processed image data to generate descriptive captions that accurately reflect the content of the images.}
+        \item {Specifically utilized state-of-the-art models such as Transformers and Convolutional Neural Networks (CNNs) integrated with attention mechanisms to enhance caption generation.}
+        \item {This project aims to create an effective solution for automated image description, leveraging cutting-edge techniques in the field of computer vision and natural language processing.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Project: OCR for Financial Report Recognition}
+    {}
+    {
+      \begin{cvitems}
+        \item {Developed an OCR system to recognize and extract key information from financial reports of banks.}
+        \item {Applied state-of-the-art OCR models such as PaddleOCR, Tesseract, and TrOCR (Transformer-based OCR) integrated with NLP for data structuring.}
+        \item {Utilized LayoutLM / LayoutLMv3 for document layout understanding to improve extraction of tables, figures, and key-value pairs.}
+        \item {Implemented pre-processing for document images (deskewing, binarization, noise reduction) to improve text detection and recognition accuracy.}
+        \item {Built post-processing pipeline with Regex + Named Entity Recognition (NER) to normalize extracted information.}
+        \item {Deployed the model as part of an AI pipeline to assist financial data analysts.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+
+\vspace{8pt}
+
+%---------------------------------------------------------
+\begin{cventries2}
+
+  \cventrynew
+  {Hanoi University of Science and Technology, \textnormal{\textit{Computer Science Student} | Hanoi}}
+  {Sep 2022 -- Sep 2024}
+  {}
+
+\end{cventries2}
+
+\vspace{-10pt}
+
+\begin{cventries}
+
+  \cventry
+    {Project: Adapting to climate change by improving extreme weather forecasts (WIDS Datathon 2023 - Kaggle)}
+    {}
+    {
+      \begin{cvitems}
+        \item {This project involves developing a climate change prediction model based on machine learning models.}
+        \item {Processed data in a time-series format and applied ensemble techniques to enhance the performance of the machine learning models.}
+        \item {Specifically utilized the latest prediction models such as Gradient Boosting, Light Gradient Boosting, and CatBoost, and combined them.}
+        \item {This project was part of a competition held at the end of 2022 on the Kaggle platform aimed at predicting climate change.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Project: Vietnamese Speaker Verification (VLSP 2021 competition)}
+    {}
+    {
+      \begin{cvitems}
+        \item {This project involves developing a Vietnamese speaker verification system using deep learning models.}
+        \item {Processed voice samples to create speaker-specific acoustic features for enrollment and verification.}
+        \item {Specifically utilized models such as ECAPA\_TDNN, ECAPA\_CNN\_TDNN, and RawNet3, and experimented with loss functions like triplet, softmax, and proto.}
+        \item {This project is part of the VLSP competition focusing on speaker verification, aiming to accurately determine if two voice samples are from the same person.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Project: Aspect-Based Sentiment Analysis (ABSA - NLP LAB)}
+    {}
+    {
+      \begin{cvitems}
+        \item {Built a Vietnamese Aspect-Based Sentiment Analysis system using SA-Transformer.}
+        \item {Combined NLP techniques such as POS tagging and Biaffine Parsing to extract aspect-sentiment pairs.}
+        \item {Collected and annotated domain-specific data to train and evaluate the model.}
+        \item {Achieved improved accuracy in aspect-level sentiment classification compared to baseline methods.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+

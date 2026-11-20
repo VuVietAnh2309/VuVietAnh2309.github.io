@@ -1,0 +1,70 @@
+%-------------------------------------------------------------------------------
+%    SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{RESEARCH EXPERIENCE}
+
+% Helper: nice group header with a LEFT blue note chip.
+\newcommand{\cvgroupheader}[2]{%
+  \vspace{0.6em}%
+  \noindent
+  \colorbox{black!5}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      {\colorbox{blue!10}{\strut\ \textcolor{blue}{\footnotesize\textbf{#2}}\ }}\hspace{0.8em}%
+      {\large\textbf{#1}}%
+    }%
+  }\\[-0.2em]
+}
+
+% ========================= MACHINE LEARNING GROUP =========================
+\cvgroupheader{Machine Learning \& Ensemble Learning}{Student Research with Dr. Kate Han and Dr. Thanh Nguyen -- March 2023 to Present}
+\begin{cventries}
+
+  \cventry
+    {VISTA: A Variable Length Genetic Algorithm and LSTM-Based Surrogate Assisted Ensemble Selection algorithm in Multiple Layers Ensemble System -- \emph{2024 IEEE Congress on Evolutionary Computation (CEC)} (Published, June 2024)}
+    {}
+    {
+      \begin{cvitems}
+        \item {This project focused on developing the VISTA method, which integrates a Variable-Length Genetic Algorithm (VLGA) with an LSTM-based surrogate model for optimizing ensemble selection in Multiple Layers Ensemble Systems (MLES).}
+        \item {Researched existing ensemble learning methods and surrogate-assisted evolutionary algorithms (SAEA).}
+        \item {Proposed a new method combining VLGA with LSTM to transform variable-length encoding into fixed-size representations for fitness prediction.}
+        \item {Implemented a multi-layer ensemble system where each layer's ensemble of classifiers (EoC) is trained on both original data and predictions from the previous layer.}
+        \item {Conducted experiments on 15 popular datasets, demonstrating that VISTA outperforms benchmark algorithms.}
+        \item {Successfully developed and validated the VISTA method, highlighting its efficacy in improving the performance of MLES.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Imputation Surveys}
+    {}
+    {
+      \begin{cvitems}
+        \item {Researched Imputation Surveys in UCI Machine Learning Repository (15 datasets).}
+        \item {Deployed some Imputation methods (SimpleImputer, KNN, MICE, GINN, etc.) for missing data and evaluation in the Classification domain.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+
+\vspace{10pt}
+
+% ===================== COMPUTER VISION GROUP =====================
+\cvgroupheader{Computer Vision \& Deep Learning}{Student Research with Assoc.Prof. Pham Van Hai -- September 2023 to Present}
+\begin{cventries}
+
+  \cventry
+    {Enhancing Facial Expression Recognition with Lightweight Attention-Based CNN -- \emph{Journal of Ambient Intelligence and Humanized Computing} (Published, August 2026)}
+    {}
+    {
+      \begin{cvitems}
+        \item {Designed a lightweight deep learning model for facial expression recognition optimized for deployment on edge devices with limited computational resources.}
+        \item {Utilized a truncated MobileNetV2 backbone for efficient feature extraction from facial images.}
+        \item {Proposed a Patch Extraction Block to divide the feature maps into non-overlapping regions, enabling the model to focus on local facial features even under occlusion or head pose variations.}
+        \item {Integrated an Attention Classifier with self-attention mechanism to enhance feature discrimination and classification accuracy.}
+        \item {Achieved competitive results on standard datasets (RAF-DB, FER2013, FERPlus) and a custom real-world challenge dataset with occlusion and pose variations.}
+      \end{cvitems}
+    }
+
+\end{cventries}
+

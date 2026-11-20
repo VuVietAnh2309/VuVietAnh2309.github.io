@@ -1,0 +1,72 @@
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[9pt, letterpaper]{russell}
+
+
+% Configure page margins with geometry
+\geometry{left=1.0cm, top=.8cm, right=1.0cm, bottom=0.5cm, footskip=.5cm}
+
+% Specify the location of the included fonts
+\fontdir[fonts/]
+
+% Color for highlights
+%
+%                 russell-nephritis, russell-concrete, russell-darknight, russell-purple
+\colorlet{russell}{russell-black}
+
+% Set false if you don't want to highlight section with russell color
+\setbool{acvSectionColorHighlight}{false}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+% Second contact line (LinkedIn + ORCID) is rendered through the class's \quote
+% hook -- the only hook inside the header minipage. Restyle it to match the
+% social line and tighten the gap above it.
+\renewcommand{\acvHeaderAfterSocialSkip}{1.5mm}
+\renewcommand{\headerquotestyle}[1]{{\fontsize{8pt}{1em}\headerfont\color{text} #1}}
+
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%-------------------------------------------------------------------------------
+\photo[rectangle,noedge,right]{./avatar}
+\name{\bf{VŨ}}{\bf{VIỆT ANH}}
+\position{~} % Empty line for spacing
+
+% Phone + address live in a git-ignored file so they never reach the public repo/site.
+\IfFileExists{private/contact_vi.tex}{\input{private/contact_vi.tex}}{}
+\email{vietanhresearcher@gmail.com}
+\github{github.com/VuVietAnh2309}
+
+% Dòng liên hệ thứ hai -- xem phần ghi đè \headerquotestyle ở trên
+\quote{%
+  \href{https://www.linkedin.com/in/anh-vu-researcher/}{\faLinkedin\acvHeaderIconSep linkedin.com/in/anh-vu-researcher}%
+  \acvHeaderSocialSep
+  \href{https://orcid.org/0009-0006-6977-5922}{\faOrcid\acvHeaderIconSep orcid.org/0009-0006-6977-5922}%
+}
+
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+\makecvheader
+
+%-------------------------------------------------------------------------------
+%	NỘI DUNG CV/RESUME
+%-------------------------------------------------------------------------------
+\input{cv/summary_vi.tex}
+\input{cv/education_vi.tex}
+\input{cv/experience_vi.tex}
+\input{cv/projects_vi.tex}
+\input{cv/skills_vi.tex}
+\input{cv/achievements_vi.tex}
+\input{cv/languages_vi.tex}
+\input{cv/certificates_vi.tex}
+
+
+\vspace*{-1cm}
+%-------------------------------------------------------------------------------
+\end{document}
