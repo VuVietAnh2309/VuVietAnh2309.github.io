@@ -9,14 +9,12 @@
 \begin{cventries}
 
   \cventry
-    {fusion-metrics -- MATLAB-faithful objective quality metrics for image fusion (Author \& maintainer, 2026)}
+    {fusion-metrics -- MATLAB-verified image-fusion metrics for Python (Author, 2026)}
     {}
     {
       \begin{cvitems}
-        \item {Python library of 18 image-fusion quality metrics (Q\textsuperscript{AB/F}, MI, NCIE, Tsallis entropy, FMI, multiscale edge, FSIM, VIF/VIFF, SCD, PSNR, CC, SF, entropy, average gradient), ported line by line from reference MATLAB implementations.}
-        \item {Verified value by value against the original .m files: agreement at round-off level ($\leq$ 1e-12) on every metric, including MATLAB-specific details (conv2 'same' centring, uint8 saturation, edge() thinning, summation order).}
-        \item {Released on PyPI (\texttt{pip install fusion-metrics}) with a command-line tool for benchmarking whole methods, CI on Python 3.10--3.13 and a Zenodo DOI (10.5281/zenodo.24536175).}
-        \item {\href{https://github.com/VuVietAnh2309/fusion-metrics}{github.com/VuVietAnh2309/fusion-metrics} · \href{https://pypi.org/project/fusion-metrics/}{pypi.org/project/fusion-metrics}}
+        \item {Python library of 18 image-fusion quality metrics (Q\textsuperscript{AB/F}, MI, NCIE, FMI, FSIM, VIF/VIFF, SCD, \ldots), ported line by line from reference MATLAB code and verified against the original .m files to round-off level ($\leq$ 1e-12).}
+        \item {On PyPI (\texttt{pip install fusion-metrics}) with CLI, CI and Zenodo DOI. \href{https://github.com/VuVietAnh2309/fusion-metrics}{github.com/VuVietAnh2309/fusion-metrics}}
       \end{cvitems}
     }
 
