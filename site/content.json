@@ -1,0 +1,122 @@
+{
+  "_comment": "Homepage content. The CV pages (/cv/, /vi/cv/) are still generated from the .tex files; edit this file for the portfolio homepage. Text fields are {\"en\": ..., \"vi\": ...}; a plain string is used for both languages.",
+
+  "name": "Viet Anh Vu",
+  "name_native": "Vũ Việt Anh",
+  "role": {"en": "AI Engineer · MSc student in Computer Science", "vi": "Kỹ sư AI · Học viên Thạc sĩ Khoa học Máy tính"},
+  "affiliation": {"en": "Prep Education · Hanoi University of Science and Technology", "vi": "Prep Education · Đại học Bách khoa Hà Nội"},
+  "interests": {"en": ["Multimodal medical image fusion", "Lightweight vision on edge devices", "LLM serving & evaluation"],
+                "vi": ["Hợp nhất ảnh y tế đa phương thức", "Mô hình thị giác nhẹ cho thiết bị biên", "Triển khai & đánh giá LLM"]},
+  "bio": {
+    "en": "I build and serve the automated essay-scoring and grammar-correction models that thousands of IELTS learners use every day at <strong>Prep Education</strong>, and I am an MSc student in Computer Science at <strong>Hanoi University of Science and Technology</strong>. My research is on multimodal medical image fusion, lightweight vision models for edge devices, and trustworthy evaluation. I have published in Springer <em>JAIHC</em> and at IEEE <em>CEC</em>, placed 2nd at VLSP 2026, and maintain the open-source library <a href=\"https://github.com/VuVietAnh2309/fusion-metrics\">fusion-metrics</a>.",
+    "vi": "Tôi xây dựng và vận hành các mô hình chấm điểm bài luận và sửa lỗi ngữ pháp mà hàng nghìn học viên IELTS sử dụng mỗi ngày tại <strong>Prep Education</strong>, đồng thời là học viên Thạc sĩ Khoa học Máy tính tại <strong>Đại học Bách khoa Hà Nội</strong>. Hướng nghiên cứu của tôi là hợp nhất ảnh y tế đa phương thức, mô hình thị giác nhẹ cho thiết bị biên và đánh giá mô hình đáng tin cậy. Tôi có bài công bố trên Springer <em>JAIHC</em> và IEEE <em>CEC</em>, đạt giải Nhì VLSP 2026 và phát triển thư viện mã nguồn mở <a href=\"https://github.com/VuVietAnh2309/fusion-metrics\">fusion-metrics</a>."
+  },
+  "links": [
+    {"kind": "email", "label": "vietanhresearcher@gmail.com", "url": "mailto:vietanhresearcher@gmail.com"},
+    {"kind": "github", "label": "GitHub", "url": "https://github.com/VuVietAnh2309"},
+    {"kind": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/anh-vu-researcher/"},
+    {"kind": "orcid", "label": "ORCID", "url": "https://orcid.org/0009-0006-6977-5922"},
+    {"kind": "scholar", "label": "Google Scholar", "url": ""}
+  ],
+
+  "news": [
+    {"date": "2026-11", "text": {"en": "Released <a href=\"https://github.com/VuVietAnh2309/fusion-metrics/releases/tag/v1.2.0\">fusion-metrics v1.2.0</a>: all 35 reference image-fusion metrics ported from MATLAB and verified.", "vi": "Phát hành <a href=\"https://github.com/VuVietAnh2309/fusion-metrics/releases/tag/v1.2.0\">fusion-metrics v1.2.0</a>: đủ 35 chỉ số đánh giá hợp nhất ảnh, chuyển từ MATLAB và đã kiểm chứng."}},
+    {"date": "2026", "text": {"en": "🥈 2nd place (top-1 private test score) at the <strong>VLSP 2026</strong> ViTNumChart shared task on numerical reasoning over financial charts.", "vi": "🥈 Giải Nhì (điểm private test cao nhất) tại shared task ViTNumChart của <strong>VLSP 2026</strong> về suy luận số trên biểu đồ tài chính."}},
+    {"date": "2026-08", "text": {"en": "Paper on lightweight facial expression recognition published in <a href=\"https://doi.org/10.1007/s12652-026-05116-0\">Springer JAIHC</a>.", "vi": "Bài báo về nhận diện biểu cảm khuôn mặt với mô hình nhẹ được công bố trên <a href=\"https://doi.org/10.1007/s12652-026-05116-0\">Springer JAIHC</a>."}},
+    {"date": "2025-10", "text": {"en": "Joined <strong>Prep Education</strong> as an AI Engineer.", "vi": "Gia nhập <strong>Prep Education</strong> với vai trò Kỹ sư AI."}},
+    {"date": "2025-06", "text": {"en": "Started the MSc in Computer Science at HUST.", "vi": "Bắt đầu chương trình Thạc sĩ Khoa học Máy tính tại ĐH Bách khoa Hà Nội."}},
+    {"date": "2024-07", "text": {"en": "VISTA published at <a href=\"https://doi.org/10.1109/CEC60901.2024.10612029\">IEEE CEC 2024</a> (Yokohama, Japan).", "vi": "Bài VISTA được công bố tại <a href=\"https://doi.org/10.1109/CEC60901.2024.10612029\">IEEE CEC 2024</a> (Yokohama, Nhật Bản)."}}
+  ],
+
+  "publications": [
+    {
+      "title": "Enhancing facial expression recognition with lightweight attention-based CNN",
+      "authors": "<strong>Viet Anh Vu</strong>, Gia Khanh Pham, Quy Nam Tran, Son Tung Do, Danh Tuyen Pham, Van Hai Pham",
+      "venue": "Journal of Ambient Intelligence and Humanized Computing (Springer)",
+      "venue_short": "JAIHC 2026",
+      "year": 2026,
+      "figure": {"light": "assets/pattlite-architecture.svg", "dark": "assets/pattlite-architecture-dark.svg", "alt": "PATTLite architecture: truncated MobileNet backbone, patch extraction block and attention classifier"},
+      "summary": {"en": "PATTLite: a truncated MobileNet backbone, a patch-extraction block that focuses on local facial regions, and a self-attention classifier, robust to occlusion and head pose while small enough for edge devices.", "vi": "PATTLite: backbone MobileNet rút gọn, khối trích xuất patch tập trung vào các vùng cục bộ của khuôn mặt và bộ phân loại self-attention; bền vững với che khuất và thay đổi tư thế đầu, đủ nhẹ cho thiết bị biên."},
+      "links": [
+        {"label": "Paper", "url": "https://doi.org/10.1007/s12652-026-05116-0"},
+        {"label": "Code", "url": "https://github.com/VuVietAnh2309/pattlite-fer"}
+      ],
+      "bibtex": "@article{vu2026pattlite,\n  title     = {Enhancing facial expression recognition with lightweight attention-based CNN},\n  author    = {Vu, Viet Anh and Pham, Gia Khanh and Tran, Quy Nam and Do, Son Tung and Pham, Danh Tuyen and Pham, Van Hai},\n  journal   = {Journal of Ambient Intelligence and Humanized Computing},\n  publisher = {Springer},\n  year      = {2026},\n  doi       = {10.1007/s12652-026-05116-0}\n}"
+    },
+    {
+      "title": "VISTA: A Variable Length Genetic Algorithm and LSTM-Based Surrogate Assisted Ensemble Selection algorithm in Multiple Layers Ensemble System",
+      "authors": "Kate Han, Truong Thanh Nguyen, <strong>Viet Anh Vu</strong>, Alan Wee-Chung Liew, Truong Dang, Tien Thanh Nguyen",
+      "venue": "2024 IEEE Congress on Evolutionary Computation (CEC), Yokohama, Japan",
+      "venue_short": "IEEE CEC 2024",
+      "year": 2024,
+      "figure": {"inline": "vista"},
+      "summary": {"en": "Ensemble selection in multi-layer ensemble systems with a variable-length genetic algorithm, whose candidates are scored by an LSTM surrogate instead of costly retraining; evaluated on 15 benchmark datasets.", "vi": "Chọn tập con bộ phân loại trong hệ ensemble nhiều tầng bằng giải thuật di truyền độ dài biến đổi, với mô hình thay thế LSTM dự đoán độ thích nghi thay cho huấn luyện lại tốn kém; thử nghiệm trên 15 bộ dữ liệu."},
+      "links": [
+        {"label": "Paper", "url": "https://doi.org/10.1109/CEC60901.2024.10612029"}
+      ],
+      "bibtex": "@inproceedings{han2024vista,\n  title     = {VISTA: A Variable Length Genetic Algorithm and LSTM-Based Surrogate Assisted Ensemble Selection algorithm in Multiple Layers Ensemble System},\n  author    = {Han, Kate and Nguyen, Truong Thanh and Vu, Viet Anh and Liew, Alan Wee-Chung and Dang, Truong and Nguyen, Tien Thanh},\n  booktitle = {2024 IEEE Congress on Evolutionary Computation (CEC)},\n  pages     = {1--9},\n  year      = {2024},\n  doi       = {10.1109/CEC60901.2024.10612029}\n}"
+    }
+  ],
+
+  "research": [
+    {
+      "title": {"en": "Multimodal medical image fusion", "vi": "Hợp nhất ảnh y tế đa phương thức"},
+      "with": {"en": "with Dr. Dinh Phu Hung (Thuyloi University) · since 2026", "vi": "cùng TS. Đinh Phú Hùng (ĐH Thủy lợi) · từ 2026"},
+      "text": {"en": "Training-free fusion of functional (PET, SPECT) and anatomical (MRI, CT) scans, curated co-registered datasets, and evaluation that is comparable across papers.", "vi": "Hợp nhất không cần huấn luyện giữa ảnh chức năng (PET, SPECT) và ảnh giải phẫu (MRI, CT), xây dựng bộ dữ liệu đồng đăng ký, và đánh giá có thể so sánh giữa các bài báo."},
+      "links": [{"label": "fusion-metrics", "url": "https://github.com/VuVietAnh2309/fusion-metrics"}, {"label": "Datasets", "url": "https://github.com/VuVietAnh2309/corefusion-datasets"}, {"label": "Benchmark", "url": "https://github.com/VuVietAnh2309/corefusion-benchmark"}]
+    },
+    {
+      "title": {"en": "Lightweight vision on edge devices", "vi": "Thị giác máy tính nhẹ cho thiết bị biên"},
+      "with": {"en": "with Assoc. Prof. Pham Van Hai (HUST) & Dr. Pham Danh Tuyen (PTIT) · since 2023", "vi": "cùng PGS. Phạm Văn Hải (HUST) & TS. Phạm Danh Tuyên (PTIT) · từ 2023"},
+      "text": {"en": "Compact attention-based CNNs that keep accuracy under occlusion and pose variation while fitting the compute budget of edge hardware.", "vi": "CNN gọn nhẹ dựa trên attention, giữ độ chính xác khi bị che khuất hoặc thay đổi tư thế mà vẫn vừa tài nguyên của phần cứng biên."},
+      "links": [{"label": "PATTLite", "url": "https://github.com/VuVietAnh2309/pattlite-fer"}]
+    },
+    {
+      "title": {"en": "Ensemble learning & evolutionary optimisation", "vi": "Học kết hợp & tối ưu tiến hoá"},
+      "with": {"en": "with Dr. Kate Han & Dr. Tien Thanh Nguyen · since 2023", "vi": "cùng TS. Kate Han & TS. Nguyễn Tiến Thành · từ 2023"},
+      "text": {"en": "Surrogate-assisted evolutionary search for selecting classifiers in multi-layer ensemble systems.", "vi": "Tìm kiếm tiến hoá có mô hình thay thế để chọn bộ phân loại trong hệ ensemble nhiều tầng."},
+      "links": [{"label": "VISTA", "url": "https://doi.org/10.1109/CEC60901.2024.10612029"}]
+    }
+  ],
+
+  "opensource": {
+    "name": "fusion-metrics",
+    "url": "https://github.com/VuVietAnh2309/fusion-metrics",
+    "tagline": {"en": "Image-fusion quality metrics for Python, verified value by value against the reference MATLAB code.", "vi": "Bộ chỉ số đánh giá chất lượng hợp nhất ảnh cho Python, kiểm chứng khớp từng giá trị với mã MATLAB tham chiếu."},
+    "points": {
+      "en": ["35 metrics — every reference <code>.m</code> file ported line by line", "Agreement with MATLAB/Octave to ≤ 1e-12 on synthetic and real PET/SPECT–MRI cases", "Presets for the tables papers report (<code>ivif</code>, <code>liu2012</code>) and a CLI that scores whole result folders"],
+      "vi": ["35 chỉ số — mọi file <code>.m</code> tham chiếu đều được chuyển từng dòng", "Khớp MATLAB/Octave đến ≤ 1e-12 trên ảnh tổng hợp và ảnh PET/SPECT–MRI thật", "Preset cho các bảng hay gặp trong bài báo (<code>ivif</code>, <code>liu2012</code>) và CLI chấm cả thư mục kết quả"]
+    },
+    "install": "pip install fusion-metrics",
+    "figure": {"light": "assets/fusion-metrics-verification.svg", "dark": "assets/fusion-metrics-verification-dark.svg", "alt": "How fusion-metrics is verified against the original MATLAB code"},
+    "badges": [
+      {"img": "https://img.shields.io/pypi/v/fusion-metrics?label=PyPI&color=3775A9", "url": "https://pypi.org/project/fusion-metrics/", "alt": "PyPI version"},
+      {"img": "https://img.shields.io/github/stars/VuVietAnh2309/fusion-metrics?style=flat&label=stars", "url": "https://github.com/VuVietAnh2309/fusion-metrics", "alt": "GitHub stars"},
+      {"img": "https://img.shields.io/badge/DOI-10.5281%2Fzenodo.24536175-blue", "url": "https://doi.org/10.5281/zenodo.24536175", "alt": "DOI"}
+    ],
+    "others": [
+      {"name": "pattlite-fer", "url": "https://github.com/VuVietAnh2309/pattlite-fer", "text": {"en": "Code for the JAIHC 2026 paper", "vi": "Mã nguồn bài báo JAIHC 2026"}},
+      {"name": "corefusion-datasets", "url": "https://github.com/VuVietAnh2309/corefusion-datasets", "text": {"en": "Co-registered PET/SPECT/CT–MRI pairs", "vi": "Cặp ảnh PET/SPECT/CT–MRI đồng đăng ký"}},
+      {"name": "vlsp2026-vitnumchart-poster", "url": "https://github.com/VuVietAnh2309/vlsp2026-vitnumchart-poster", "text": {"en": "VLSP 2026 poster (2nd place)", "vi": "Poster VLSP 2026 (giải Nhì)"}}
+    ]
+  },
+
+  "experience": [
+    {"org": "Prep Education", "role": {"en": "AI Engineer", "vi": "Kỹ sư AI"}, "when": {"en": "Oct 2025 – present", "vi": "10/2025 – nay"},
+     "text": {"en": "Automated essay scoring for IELTS Writing & Speaking (cross-prompt DeBERTa-V3, quantized T5) and a hybrid rule + LLM grammar-correction system served on vLLM to thousands of learners daily, with an LLM-as-judge evaluation framework.", "vi": "Chấm điểm tự động IELTS Writing & Speaking (DeBERTa-V3 đa đề, T5 lượng tử hoá) và hệ thống sửa lỗi ngữ pháp kết hợp luật + LLM chạy trên vLLM cho hàng nghìn học viên mỗi ngày, kèm khung đánh giá LLM-as-judge."}},
+    {"org": "Vietsens Technology Group", "role": {"en": "AI Engineer", "vi": "Kỹ sư AI"}, "when": {"en": "Oct 2024 – Sep 2025", "vi": "10/2024 – 09/2025"},
+     "text": {"en": "AI assistant for hospital management and a prescription-recommendation system with drug-conflict detection.", "vi": "Trợ lý AI cho quản lý bệnh viện và hệ thống gợi ý đơn thuốc có phát hiện xung đột thuốc."}},
+    {"org": "FPT Information System", "role": {"en": "AI Engineer Intern", "vi": "Thực tập sinh Kỹ sư AI"}, "when": {"en": "Aug 2023 – May 2024", "vi": "08/2023 – 05/2024"},
+     "text": {"en": "OCR and layout understanding for bank financial reports (PaddleOCR, TrOCR, LayoutLMv3) and image captioning.", "vi": "OCR và hiểu bố cục cho báo cáo tài chính ngân hàng (PaddleOCR, TrOCR, LayoutLMv3) và sinh chú thích ảnh."}}
+  ],
+
+  "awards": [
+    {"title": {"en": "2nd Place — VLSP 2026 (top-1 private test score)", "vi": "Giải Nhì — VLSP 2026 (điểm private test cao nhất)"}, "detail": {"en": "ViTNumChart: VLM-based numerical reasoning over financial charts", "vi": "ViTNumChart: suy luận số trên biểu đồ tài chính bằng VLM"}, "year": "2026"},
+    {"title": {"en": "2nd Place — WiDS Datathon 2023 (Kaggle)", "vi": "Giải Nhì — WiDS Datathon 2023 (Kaggle)"}, "detail": {"en": "Extreme-weather forecasting for climate adaptation", "vi": "Dự báo thời tiết cực đoan để thích ứng biến đổi khí hậu"}, "year": "2023"}
+  ],
+
+  "education": [
+    {"degree": {"en": "MSc in Computer Science", "vi": "Thạc sĩ Khoa học Máy tính"}, "school": {"en": "Hanoi University of Science and Technology", "vi": "Đại học Bách khoa Hà Nội"}, "when": "2025 – present", "note": "CPA 3.71/4.0"},
+    {"degree": {"en": "BSc in Computer Science", "vi": "Cử nhân Khoa học Máy tính"}, "school": {"en": "Hanoi University of Science and Technology", "vi": "Đại học Bách khoa Hà Nội"}, "when": "2020 – 2024", "note": "CPA 3.48/4.0"}
+  ]
+}
