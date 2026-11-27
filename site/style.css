@@ -201,6 +201,8 @@ time {
 .chip:hover { border-color: var(--accent-2); color: var(--accent-2); text-decoration: none; }
 .chip-strong { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 .chip-strong:hover { color: var(--bg); filter: brightness(1.12); }
+.short-cv { align-self: center; font-size: 13px; color: var(--muted); margin-left: 4px; }
+.short-cv a { font-weight: 600; }
 .portrait { width: 280px; height: 350px; object-fit: cover; object-position: center 20%; border-radius: 18px; box-shadow: 0 1px 0 var(--line), 0 24px 48px -24px rgba(16, 32, 64, .35); }
 
 /* sections */
