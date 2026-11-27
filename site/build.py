@@ -20,15 +20,17 @@ import sys
 from datetime import date
 from pathlib import Path
 
+from portfolio import build_portfolio
+
 ROOT = Path(__file__).resolve().parent.parent
 SITE_SRC = Path(__file__).resolve().parent
 
 LANGS = {
-    "en": {"tex": "resume.tex", "path": "", "html_lang": "en", "pdf": "VuVietAnh_CV.pdf",
+    "en": {"tex": "resume.tex", "path": "cv/", "html_lang": "en", "pdf": "VuVietAnh_CV.pdf",
            "ui": {"download": "Download CV (PDF)", "switch": "Tiếng Việt", "updated": "Last updated",
                   "built": "Generated from my LaTeX CV", "contents": "Contents", "top": "Back to top",
                   "role": "AI Engineer · Machine Learning Researcher"}},
-    "vi": {"tex": "resume_vi.tex", "path": "vi/", "html_lang": "vi", "pdf": "VuVietAnh_CV_vi.pdf",
+    "vi": {"tex": "resume_vi.tex", "path": "vi/cv/", "html_lang": "vi", "pdf": "VuVietAnh_CV_vi.pdf",
            "ui": {"download": "Tải CV (PDF)", "switch": "English", "updated": "Cập nhật lần cuối",
                   "built": "Tự động tạo từ CV LaTeX", "contents": "Mục lục", "top": "Lên đầu trang",
                   "role": "Kỹ sư AI · Nghiên cứu Học máy"}},
@@ -398,7 +400,7 @@ def build_page(lang: str, other: str, template: str, has_pdf: bool) -> str:
     ui = cfg["ui"]
     head = parse_header(ROOT / cfg["tex"])
     sections = parse_sections(ROOT / cfg["tex"])
-    up = "../" if cfg["path"] else ""
+    up = "../" * cfg["path"].count("/")
     lead = next((k for k, (_, c) in enumerate(sections) if c.startswith('<p class="lead">')), None)
     summary_html = ""
     if lead is not None:
@@ -415,7 +417,7 @@ def build_page(lang: str, other: str, template: str, has_pdf: bool) -> str:
         "ROLE": ui["role"],
         "CONTACT": contact_links(head), "BODY": body, "PDF_BUTTON": pdf_btn,
         "SWITCH_HREF": up + ocfg["path"], "SWITCH_LABEL": ui["switch"],
-        "CONTENTS": ui["contents"],
+        "CONTENTS": ui["contents"], "HOME": up + ("vi/" if lang == "vi" else ""),
     }
     page = template
     for k, v in replacements.items():
@@ -443,7 +445,9 @@ def main() -> None:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(build_page(lang, other, template, has_pdf), encoding="utf-8")
         if has_pdf:
-            shutil.copy(pdfs[lang], out / LANGS[lang]["pdf"])
+            shutil.copy(pdfs[lang], out / LANGS[lang]["pdf"])   # PDFs stay at the site root
+    build_portfolio(out)                                          # homepage (/, /vi/) and blog
+    shutil.copytree(SITE_SRC / "assets", out / "assets")
     shutil.copy(SITE_SRC / "style.css", out / "style.css")
     shutil.copy(ROOT / "avatar.png", out / "avatar.png")
     (out / ".nojekyll").write_text("")
