@@ -19,7 +19,7 @@ UI = {
                    ("open-source", "Open source"), ("experience", "Experience"), ("writing", "Writing")],
            "cv": "CV", "switch": "Tiếng Việt", "news": "News", "pubs": "Publications", "research": "Research",
            "oss": "Open source", "exp": "Experience", "awards": "Awards", "edu": "Education", "writing": "Writing",
-           "fullcv": "Full CV", "pdf": "CV (PDF)", "bibtex": "BibTeX", "copy": "Copy", "copied": "Copied",
+           "fullcv": "Full CV", "short": "2-page versions", "acad": "academic", "ind": "industry", "pdf": "CV (PDF)", "bibtex": "BibTeX", "copy": "Copy", "copied": "Copied",
            "also": "More repositories", "read": "Read", "back": "All writing", "updated": "Updated",
            "built": "Built with Python from my LaTeX CV",
            "post_lang": "", "interests": "Research interests", "home": "Home"},
@@ -27,7 +27,7 @@ UI = {
                    ("open-source", "Mã nguồn mở"), ("experience", "Kinh nghiệm"), ("writing", "Bài viết")],
            "cv": "CV", "switch": "English", "news": "Tin mới", "pubs": "Công bố khoa học", "research": "Hướng nghiên cứu",
            "oss": "Mã nguồn mở", "exp": "Kinh nghiệm", "awards": "Giải thưởng", "edu": "Học vấn", "writing": "Bài viết",
-           "fullcv": "CV đầy đủ", "pdf": "CV (PDF)", "bibtex": "BibTeX", "copy": "Sao chép", "copied": "Đã chép",
+           "fullcv": "CV đầy đủ", "short": "Bản rút gọn 2 trang", "acad": "học thuật", "ind": "công nghiệp", "pdf": "CV (PDF)", "bibtex": "BibTeX", "copy": "Sao chép", "copied": "Đã chép",
            "also": "Repo khác", "read": "Đọc", "back": "Tất cả bài viết", "updated": "Cập nhật",
            "built": "Tự động tạo bằng Python từ CV LaTeX",
            "post_lang": " (English)", "interests": "Quan tâm nghiên cứu", "home": "Trang chủ"},
@@ -246,6 +246,9 @@ def links_row(c: dict, lang: str, up: str) -> str:
         label = esc(l["label"])
         items.append(f'<a class="chip" href="{esc(l["url"])}">{icon(l["kind"])}<span>{label}</span></a>')
     items.append(f'<a class="chip chip-strong" href="{up}{PDF[lang]}">{icon("pdf")}<span>{UI[lang]["pdf"]}</span></a>')
+    ui = UI[lang]
+    items.append(f'<span class="short-cv">{ui["short"]}: <a href="{up}VuVietAnh_CV_2p_academic.pdf">{ui["acad"]}</a>'
+                 f' · <a href="{up}VuVietAnh_CV_2p_industry.pdf">{ui["ind"]}</a></span>')
     return "".join(items)
 
 

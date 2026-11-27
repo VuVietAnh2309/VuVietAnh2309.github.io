@@ -1,0 +1,41 @@
+\cvsection{EXPERIENCE}
+\begin{cventries}
+  \cventry
+    {Prep Education -- \textnormal{\textit{AI Engineer}, Hanoi}}
+    {Oct 2025 -- Present}
+    {
+      \begin{cvitems}
+        \item {\textbf{Automated essay scoring (IELTS Writing \& Speaking).} Trained cross-prompt DeBERTa-V3 (189M) and quantized T5 (120M) scorers: Writing accuracy within $\pm$0.5 band $\sim$85\% (Task 1) and $\sim$87\% (Task 2), $\pm$1 band $\sim$98\%. Speaking combines ML scoring with pronunciation, grammar and lexical subsystems: $\pm$0.5 accuracy $\sim$82\%, QWK/PCC $\sim$0.9.}
+        \item {\textbf{Grammar correction at scale.} Built a hybrid rule-based + LLM corrector (F0.5 $\sim$60\%, tuned for precision) served on \textbf{vLLM} to \textbf{thousands of learners daily}; added request batching and caching to cut tail latency under bursty traffic.}
+        \item {\textbf{LLM-as-judge evaluation.} Designed a rubric-based framework (correctness, meaning preservation, minimal edits, naturalness) that exposes over-correction and paraphrase drift missed by F0.5/BLEU and drives prompt and rule iterations.}
+        \item {\textbf{OCR + LLM pipeline for Chinese vocabulary.} PP-OCRv5 $\rightarrow$ linguistic analysis $\rightarrow$ self-hosted Qwen on vLLM; beat a single-stage VLM baseline on accuracy, latency and cost; cut idle VRAM from $\sim$8.7\,GB to $\sim$0.6\,GB.}
+        \item {\textbf{MLOps.} Docker $\rightarrow$ GitLab CI/CD $\rightarrow$ ArgoCD $\rightarrow$ Kubernetes; FastAPI services with async GPU batching.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {Vietsens Technology Group -- \textnormal{\textit{AI Engineer}, Hanoi}}
+    {Oct 2024 -- Sep 2025}
+    {
+      \begin{cvitems}
+        \item {Built LLM agents for doctors (medical-history inquiry, prescribing, diagnosis support) integrated into the \textbf{National Hospital Management Software}, adopted by Bach Mai Hospital.}
+        \item {Prescription recommendation from electronic health records (tree ensembles, SVM) with LLM checks for duplicate active ingredients and drug--drug interactions.}
+      \end{cvitems}
+    }
+
+\vspace{8pt}
+
+  \cventry
+    {FPT Information System -- \textnormal{\textit{AI Engineer Intern}, Hanoi}}
+    {Aug 2023 -- May 2024}
+    {
+      \begin{cvitems}
+        \item {OCR for bank financial reports: PaddleOCR/TrOCR with LayoutLMv3 layout understanding, image pre-processing and Regex + NER post-processing for analysts.}
+        \item {Image captioning with CNN encoders and Transformer decoders with attention.}
+      \end{cvitems}
+    }
+\end{cventries}
+
+\vspace{10pt}

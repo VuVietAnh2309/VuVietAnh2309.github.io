@@ -27,6 +27,8 @@ jobs:
           root_file: |
             resume.tex
             resume_vi.tex
+            resume_academic.tex
+            resume_industry.tex
           latexmk_use_xelatex: true
 
       - uses: actions/setup-python@v5

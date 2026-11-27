@@ -446,6 +446,11 @@ def main() -> None:
         target.write_text(build_page(lang, other, template, has_pdf), encoding="utf-8")
         if has_pdf:
             shutil.copy(pdfs[lang], out / LANGS[lang]["pdf"])   # PDFs stay at the site root
+    # optional 2-page versions, offered as extra downloads
+    for src, name in (("resume_academic.pdf", "VuVietAnh_CV_2p_academic.pdf"),
+                      ("resume_industry.pdf", "VuVietAnh_CV_2p_industry.pdf")):
+        if (ROOT / src).exists():
+            shutil.copy(ROOT / src, out / name)
     build_portfolio(out)                                          # homepage (/, /vi/) and blog
     shutil.copytree(SITE_SRC / "assets", out / "assets")
     shutil.copy(SITE_SRC / "style.css", out / "style.css")
